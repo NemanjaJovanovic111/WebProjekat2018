@@ -3,10 +3,14 @@ package dto;
 public class TerritoryDTO {
 
 	private String name;
-	private String area;
-	private String population;
+	private Integer area;
+	private Integer population;
 
-	public TerritoryDTO(String name, String area, String population) {
+	public TerritoryDTO() {
+		super();
+	}
+
+	public TerritoryDTO(String name, Integer area, Integer population) {
 		super();
 		this.name = name;
 		this.area = area;
@@ -21,19 +25,19 @@ public class TerritoryDTO {
 		this.name = name;
 	}
 
-	public String getArea() {
+	public Integer getArea() {
 		return area;
 	}
 
-	public void setArea(String area) {
+	public void setArea(Integer area) {
 		this.area = area;
 	}
 
-	public String getPopulation() {
+	public Integer getPopulation() {
 		return population;
 	}
 
-	public void setPopulation(String population) {
+	public void setPopulation(Integer population) {
 		this.population = population;
 	}
 

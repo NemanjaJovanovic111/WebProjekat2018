@@ -10,41 +10,10 @@ public class Territory {
 	private int area;
 	private int population;
 	
-	public Territory(TerritoryDTO dto) {
-		id = UUID.randomUUID().toString();
-		name = dto.getName();
-		area = Integer.parseInt(dto.getArea());
-		population = Integer.parseInt(dto.getPopulation());
+	public Territory () {
+		
 	}
 	
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public int getArea() {
-		return area;
-	}
-	public void setArea(int area) {
-		this.area = area;
-	}
-	public int getPopulation() {
-		return population;
-	}
-	public void setPopulation(int population) {
-		this.population = population;
-	}
-	@Override
-	public String toString() {
-		return "Territory [name=" + name + ", area=" + area + ", population=" + population + "]";
-	}
 	public Territory(String id, String name, int area, int population) {
 		super();
 		this.id = id;
@@ -53,7 +22,48 @@ public class Territory {
 		this.population = population;
 	}
 	
-	public Territory () {
-		
+	public Territory(TerritoryDTO dto) {
+		id = UUID.randomUUID().toString();
+		name = dto.getName();
+		area = dto.getArea();
+		population = dto.getPopulation();
 	}
+	
+	public String getId() {
+		return id;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public int getArea() {
+		return area;
+	}
+	
+	public void setArea(int area) {
+		this.area = area;
+	}
+	
+	public int getPopulation() {
+		return population;
+	}
+	
+	public void setPopulation(int population) {
+		this.population = population;
+	}
+
+	@Override
+	public String toString() {
+		return "Territory [name=" + name + ", area=" + area + ", population=" + population + "]";
+	}
+
 }
