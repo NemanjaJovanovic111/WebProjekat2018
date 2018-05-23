@@ -1,0 +1,6 @@
+[
+	{"username" : "admin", "password" : "admin", "email" : "email", "firstName" : "nemanja", "lastName" : "jovanovic", 
+		"profilePicture" : "https://avatars2.githubusercontent.com/u/18287250?s=400&v=4", "phoneNumber" : "213413413",
+		"territory" : "1", "userType" : "ADMIN"
+	}
+]

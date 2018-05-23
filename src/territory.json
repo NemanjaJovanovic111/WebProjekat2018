@@ -1,0 +1,5 @@
+[
+	{"id" : "1", "name" : "Gornji Compi", "area" : "666", "population" : "260000" },
+	{"id" : "2", "name" : "Donji Compi", "area" : "1000", "population" : "420" },
+	{"id" : "3", "name" : "CompovGrad", "area" : "666", "population" : "1312312312" }
+]
