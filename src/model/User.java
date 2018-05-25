@@ -8,17 +8,16 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String profilePicture;
-	
+	private UserType userType;
 	private String phoneNumber;
 	private String territory;
-	private UserType userType;
 	
 	public User() {
 		super();
 	}
 
-	public User(String username, String password, String email, String firstName, String lastName, String profilePicture,
-			String phoneNumber, String territory, UserType userType) {
+	public User(String username, String password, String email, String firstName, String lastName,
+			String profilePicture, UserType userType, String phoneNumber, String territory) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -26,9 +25,9 @@ public class User {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.profilePicture = profilePicture;
+		this.userType = userType;
 		this.phoneNumber = phoneNumber;
 		this.territory = territory;
-		this.userType = userType;
 	}
 
 	public String getUsername() {
@@ -79,6 +78,14 @@ public class User {
 		this.profilePicture = profilePicture;
 	}
 
+	public UserType getUserType() {
+		return userType;
+	}
+
+	public void setUserType(UserType userType) {
+		this.userType = userType;
+	}
+
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
@@ -95,19 +102,11 @@ public class User {
 		this.territory = territory;
 	}
 
-	public UserType getUserType() {
-		return userType;
-	}
-
-	public void setUserType(UserType userType) {
-		this.userType = userType;
-	}
-
 	@Override
 	public String toString() {
 		return "User [username=" + username + ", password=" + password + ", email=" + email + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", profilePicture=" + profilePicture + ", phoneNumber=" + phoneNumber
-				+ ", territory=" + territory + ", userType=" + userType + "]";
+				+ ", lastName=" + lastName + ", profilePicture=" + profilePicture + ", userType=" + userType
+				+ ", phoneNumber=" + phoneNumber + ", territory=" + territory + "]";
 	}
 	
 }

@@ -25,6 +25,7 @@ public class LoginService {
 		
 		UserDAO userDao = UserDAO.getInstance();
 		User user = userDao.login(loginDto.getUsername(), loginDto.getPassword());
+		System.out.println(user);
 		return user;
 	}
 	

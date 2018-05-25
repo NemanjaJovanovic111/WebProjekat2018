@@ -1,9 +1,8 @@
 package model;
 
 public enum UserType {
-	
-	
-	VOLONTER,
+
+	VOLUNTEER,
 	ADMIN
 
 }

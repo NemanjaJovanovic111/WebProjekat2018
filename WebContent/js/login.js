@@ -28,8 +28,9 @@ $(document).ready(function (){
 
 						  
 					  }
-					  else if(sessionStorage.userType === "...") {
+					  else if(sessionStorage.userType === "VOLUNTEER") {
 						  
+						  console.log("is VOLUNTEER");
 					  }
 				  }
 				  else {
