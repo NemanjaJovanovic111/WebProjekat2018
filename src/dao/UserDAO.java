@@ -19,42 +19,12 @@ import rest.Util;
 
 public class UserDAO {
 	
-	private static UserDAO instance = null;
-	private ArrayList<Admin> admins = new ArrayList<Admin>();
-	private ArrayList<Volunteer> volunteers = new ArrayList<Volunteer>();
-	
-	public UserDAO() throws FileNotFoundException, IOException {
-		loadUsers();
-	}
 
-	public static UserDAO getInstance() throws FileNotFoundException, IOException{
-		if (instance == null)
-			instance = new UserDAO();
-		return instance;
-	}
-	
-	private void loadUsers() throws FileNotFoundException, IOException {
-		loadAdmins();
-		loadVolunteers();
-	}
-	
-	private void loadAdmins() throws JsonParseException, JsonMappingException, IOException {
-		String filePath = Util.getPathToDeployedApp() + "admins.json";
-		String content = new String(Files.readAllBytes(Paths.get(filePath)));
-		admins = new ObjectMapper().readValue(content, new TypeReference<List<Admin>>(){});		
-	}
-	
-	private void loadVolunteers() throws JsonParseException, JsonMappingException, IOException {
-		String filePath = Util.getPathToDeployedApp() + "volunteers.json";
-		String content = new String(Files.readAllBytes(Paths.get(filePath)));
-		volunteers = new ObjectMapper().readValue(content, new TypeReference<List<Volunteer>>(){});
+	public static User login(String username, String password) throws FileNotFoundException, IOException {
 		
-		for(Volunteer v : volunteers) { 
-			System.out.println(v);
-		}
-	}
-
-	public User login(String username, String password) {
+		ArrayList<Admin> admins = AdminDAO.getInstance().getAll();
+		ArrayList<Volunteer> volunteers = VolunteerDAO.getInstance().getAll();
+		
 		
 		for (User u : admins) {
 			if (u.getUsername().equals(username) && 
@@ -63,6 +33,7 @@ public class UserDAO {
 				return u;
 			}
 		}
+		
 		
 		for (User u : volunteers) {
 			if (u.getUsername().equals(username) && 

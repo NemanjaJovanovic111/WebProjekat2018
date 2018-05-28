@@ -11,9 +11,10 @@ $(document).ready(function(){
 		formData.append('username', $("#username").val());
 		formData.append('password', $("#password").val());
 		formData.append('email', $("#email").val());
-		formData.append('name', $("#name").val());
-		formData.append('surname', $("#surname").val());
-		formData.append('phone_number', $("#phone_number").val());
+		formData.append('firstName', $("#name").val());
+		formData.append('lastName', $("#surname").val());
+		formData.append('phoneNumber', $("#phone_number").val());
+		formData.append('territory', "territory");
 		//formData.append('role', $("input[name=role]:checked").val()); ovako ce nesto biti za territory polje
 		formData.append('image', document.querySelector('input[type=file]').files[0]);
 		

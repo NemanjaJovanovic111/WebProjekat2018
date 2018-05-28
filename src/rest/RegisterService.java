@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
-import java.nio.file.Files;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -17,6 +16,9 @@ import javax.ws.rs.core.MediaType;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 
+import dao.VolunteerDAO;
+import model.Volunteer;
+
 
 @Path("/registerService")
 public class RegisterService {
@@ -24,20 +26,31 @@ public class RegisterService {
 	@POST
 	@Path("/register")
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
-	@Produces(MediaType.TEXT_PLAIN)
-	public char uploadFile(
+	@Produces(MediaType.APPLICATION_JSON)
+	public Volunteer registerVolunteer(
 			@FormDataParam("username") String username, 
 			@FormDataParam("password") String password,
-			@FormDataParam("conf_password") String confPassword,
 			@FormDataParam("email") String email,
-			@FormDataParam("name") String name, 
-			@FormDataParam("surname") String surname,
-			@FormDataParam("phone_number") Integer phoneNumber,
+			@FormDataParam("firstName") String firstName, 
+			@FormDataParam("lastName") String lastName,
+			@FormDataParam("phoneNumber") String phoneNumber,
 			@FormDataParam("territory") String territory,
 			@FormDataParam("image") InputStream fileInputStream,
 			@FormDataParam("image") FormDataContentDisposition contentDispositionHeader) throws IOException, URISyntaxException {
 		
-		String userImagesDirAbsolutePath = Util.getPathToDeployedApp() + "../../../users/";
+		String picturePath = savePicture(username, fileInputStream);
+		
+		VolunteerDAO volunteerDAO = VolunteerDAO.getInstance();
+		
+		if(!volunteerDAO.volunteersExists(username))
+			return volunteerDAO.createVolunteer(username, password, email, firstName, lastName, 
+					picturePath, phoneNumber, territory);
+		else
+			return null;
+	}	
+	
+	public static String savePicture(String username, InputStream fileInputStream) throws IOException { 
+		String userImagesDirAbsolutePath = Util.getPathToDeployedApp() + "../../users/";
 		File userImagesDir = new File(userImagesDirAbsolutePath);
 		
 		if(!userImagesDir.exists())
@@ -48,8 +61,8 @@ public class RegisterService {
 		saveFile(fileInputStream, userImageAbsolutePath);
 		fileInputStream.close();
 		
-		return 'c';	
-	}	
+		return "./users/" + username + ".jpg";
+	}
 	
 	
 	public static void saveFile(InputStream in, String path) throws IOException {

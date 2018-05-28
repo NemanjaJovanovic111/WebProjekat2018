@@ -30,7 +30,7 @@ $(document).ready(function (){
 					  }
 					  else if(sessionStorage.userType === "VOLUNTEER") {
 						  
-						  console.log("is VOLUNTEER");
+						  window.location.replace("emergency.html");
 					  }
 				  }
 				  else {

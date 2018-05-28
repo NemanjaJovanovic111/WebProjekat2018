@@ -22,10 +22,7 @@ public class LoginService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public User login(LoginDTO loginDto) throws URISyntaxException, FileNotFoundException, IOException {
-		
-		UserDAO userDao = UserDAO.getInstance();
-		User user = userDao.login(loginDto.getUsername(), loginDto.getPassword());
-		System.out.println(user);
+		User user = UserDAO.login(loginDto.getUsername(), loginDto.getPassword());
 		return user;
 	}
 	

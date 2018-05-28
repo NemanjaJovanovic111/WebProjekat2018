@@ -60,7 +60,11 @@ import rest.Util;
 			saveTerritories();
 			return territory;
 		}
-
+		
+		
+		public ArrayList<Territory> getAll(){
+			return territories;
+		}
 	}
 
 

@@ -2,15 +2,15 @@ package model;
 
 public class User {
 	
-	private String username;
-	private String password;
-	private String email;
-	private String firstName;
-	private String lastName;
-	private String profilePicture;
-	private UserType userType;
-	private String phoneNumber;
-	private String territory;
+	protected String username;
+	protected String password;
+	protected String email;
+	protected String firstName;
+	protected String lastName;
+	protected String profilePicture;
+	protected UserType userType;
+	protected String phoneNumber;
+	protected String territory;
 	
 	public User() {
 		super();
