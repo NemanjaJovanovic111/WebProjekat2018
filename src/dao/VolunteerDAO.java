@@ -25,7 +25,7 @@ public class VolunteerDAO {
 	private ArrayList< Volunteer> volunteers = new ArrayList< Volunteer>();
 	
 	public VolunteerDAO() throws FileNotFoundException, IOException {
-		filePath = Util.getPathToDeployedApp() + "volunteers.json";
+		filePath = Util.getAbsolutePathToDeployedApp() + "volunteers.json";
 		loadVolunteers();
 	}
 

@@ -1,8 +1,5 @@
 package rest;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
@@ -38,48 +35,17 @@ public class RegisterService {
 			@FormDataParam("image") InputStream fileInputStream,
 			@FormDataParam("image") FormDataContentDisposition contentDispositionHeader) throws IOException, URISyntaxException {
 		
-		String picturePath = savePicture(username, fileInputStream);
+		
+		String imagesDirPath = Util.getAbsolutePathToImagesDir("users");
+		Util.savePicture(imagesDirPath, username, fileInputStream);
 		
 		VolunteerDAO volunteerDAO = VolunteerDAO.getInstance();
-		
+		String relativePathToImage = Util.getRelativePathToImage("users", username);
 		if(!volunteerDAO.volunteersExists(username))
 			return volunteerDAO.createVolunteer(username, password, email, firstName, lastName, 
-					picturePath, phoneNumber, territory);
+					relativePathToImage, phoneNumber, territory);
 		else
 			return null;
 	}	
-	
-	public static String savePicture(String username, InputStream fileInputStream) throws IOException { 
-		String userImagesDirAbsolutePath = Util.getPathToDeployedApp() + "../../users/";
-		File userImagesDir = new File(userImagesDirAbsolutePath);
-		
-		if(!userImagesDir.exists())
-			userImagesDir.mkdirs();
-		
-		String userImageAbsolutePath = userImagesDirAbsolutePath + username + ".jpg";
-		
-		saveFile(fileInputStream, userImageAbsolutePath);
-		fileInputStream.close();
-		
-		return "./users/" + username + ".jpg";
-	}
-	
-	
-	public static void saveFile(InputStream in, String path) throws IOException {
-		
-		ByteArrayOutputStream out = new ByteArrayOutputStream();
-		byte[] buffer = new byte[1024];
-		int n = 0;
-		while ((n = in.read(buffer)) != -1) {
-		   out.write(buffer, 0, n);
-		}
-		out.close();
-		byte[] response = out.toByteArray();
-
-		FileOutputStream fos = new FileOutputStream(path);
-		fos.write(response);
-		fos.close();
-		
-	}
 
 }

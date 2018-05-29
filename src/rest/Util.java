@@ -1,10 +1,55 @@
 package rest;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 public class Util {
 	
-	public static String getPathToDeployedApp() {
-		String path = Util.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-		return path;
+	public static String getAbsolutePathToDeployedApp() {
+		return Util.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+	}
+	
+	// absolute path to images folders on deployed app
+	public static String getAbsolutePathToImagesDir(String objects) {
+		return getAbsolutePathToDeployedApp() + "../../" + objects + "/";
+	}
+	
+	// path to image for displaying in html pages
+	public static String getRelativePathToImage(String objects, String fileName) {
+		return "./" + objects + "/" + fileName + ".jpg";
+	}
+	
+	public static void savePicture(String imagesDirPath, String fileName, InputStream fileInputStream) throws IOException { 
+		File userImagesDir = new File(imagesDirPath);
+		
+		if(!userImagesDir.exists())
+			userImagesDir.mkdirs();
+		
+		String userImageAbsolutePath = imagesDirPath + fileName + ".jpg";
+		
+		saveFile(fileInputStream, userImageAbsolutePath);
+		fileInputStream.close();
+	}
+	
+	
+	public static void saveFile(InputStream in, String path) throws IOException {
+		
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
+		byte[] buffer = new byte[1024];
+		int n = 0;
+		while ((n = in.read(buffer)) != -1) {
+		   out.write(buffer, 0, n);
+		}
+		out.close();
+		byte[] response = out.toByteArray();
+
+		FileOutputStream fos = new FileOutputStream(path);
+		fos.write(response);
+		fos.close();
+		
 	}
 
 }

@@ -26,7 +26,7 @@ import rest.Util;
 		private ArrayList<Territory> territories = new ArrayList<Territory>();
 		
 		public TerritoryDAO() throws FileNotFoundException, IOException {
-			filePath = Util.getPathToDeployedApp() + "territory.json";
+			filePath = Util.getAbsolutePathToDeployedApp() + "territory.json";
 			loadTerritories();
 		}
 

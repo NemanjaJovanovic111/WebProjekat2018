@@ -15,9 +15,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
-import dto.VolunteerDTO;
 import model.Admin;
-import model.Volunteer;
 import rest.Util;
 
 public class AdminDAO {
@@ -28,7 +26,7 @@ public class AdminDAO {
 	private ArrayList<Admin> admins = new ArrayList< Admin>();
 	
 	public AdminDAO() throws FileNotFoundException, IOException {
-		filePath = Util.getPathToDeployedApp() + "admins.json";
+		filePath = Util.getAbsolutePathToDeployedApp() + "admins.json";
 		loadAdmins();
 	}
 

@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class Emergency {
 	
-	
+	String id;
 	String locationName;
 	String municipalitie;
 	String description;
@@ -18,20 +18,28 @@ public class Emergency {
 	
 	public Emergency(){}
 	
-	public Emergency(String locationName, String municipalitie, String description, LocalDateTime dateTime,
+	public Emergency(String id, String locationName, String municipalitie, String description,
 			String gMapLoc, String territory, EmergencyType emergencyType, String picture,
-			EmergencyState emergencyState, String volunteer) {
+			EmergencyState emergencyState) {
 		super();
+		this.id = id;
 		this.locationName = locationName;
 		this.municipalitie = municipalitie;
 		this.description = description;
-		this.dateTime = dateTime;
+		this.dateTime = LocalDateTime.now();
 		this.gMapLoc = gMapLoc;
 		this.territory = territory;
 		this.emergencyType = emergencyType;
 		this.picture = picture;
 		this.emergencyState = emergencyState;
-		this.volunteer = volunteer;
+	}
+	
+	public String getId() {
+		return id;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getLocationName() {
