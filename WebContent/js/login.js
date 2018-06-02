@@ -24,7 +24,7 @@ $(document).ready(function (){
 					  
 					  if(sessionStorage.userType === "ADMIN") {
 						  
-						  window.location.replace("createTerritory.html");
+						  window.location.replace("admin.html");
 
 						  
 					  }

@@ -1,45 +1,40 @@
 package model;
 
-import dto.VolunteerDTO;
-
 public class Volunteer extends User {
 	
-	private boolean status = false;
-
-	public Volunteer() {
-		super();
-	}
+	private UserStatus userStatus = UserStatus.ACTIVE;
 
 	public Volunteer(String username, String password, String email, String firstName, String lastName,
-			String profilePicture, String phoneNumber, String territory) {
-		super(username, password, email, firstName, lastName, profilePicture, UserType.VOLUNTEER, phoneNumber, territory);
-		status = false;
-	}
-
-	public Volunteer(VolunteerDTO dto){
-		username = dto.getUsername();
-		password = dto.getPassword();
-		email  = dto.getEmail();
-		firstName = dto.getFirstName();
-		lastName = dto.getLastName();
-		profilePicture = dto.getProfilePicture();
-		userType = UserType.VOLUNTEER;
-		phoneNumber  = dto.getPhoneNumber();
-		territory = dto.getTerritory();	
+			String profilePicture, String phoneNumber, String territoryId) {
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.profilePicture = profilePicture;
+		this.userType = UserType.VOLUNTEER;
+		this.phoneNumber = phoneNumber;
+		this.territoryId = territoryId;
+		this.userStatus = UserStatus.ACTIVE;
 	}
 	
-
-	public boolean isStatus() {
-		return status;
+	public Volunteer(String username, String password, String email, String firstName, String lastName,
+			String profilePicture, UserType userType, String phoneNumber, String territoryId, UserStatus userStatus) {
+		super(username, password, email, firstName, lastName, profilePicture, userType, phoneNumber, territoryId);
+		this.userType = userType;
 	}
 
-	public void setStatus(boolean status) {
-		this.status = status;
+	public UserStatus getUserStatus() {
+		return userStatus;
+	}
+
+	public void setUserStatus(UserStatus userStatus) {
+		this.userStatus = userStatus;
 	}
 
 	@Override
 	public String toString() {
-		return "Volunteer [status=" + status + "]";
+		return "Volunteer [userStatus=" + userStatus + "]";
 	}
 	
 }

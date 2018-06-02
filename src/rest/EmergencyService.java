@@ -4,10 +4,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
-import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -39,7 +40,6 @@ public class EmergencyService {
 			@FormDataParam("image") FormDataContentDisposition contentDispositionHeader,
 			@FormDataParam("emergencyState") EmergencyState emergencyState
 	) throws URISyntaxException, FileNotFoundException, IOException {
-		
 		String emergencyId = UUID.randomUUID().toString();
 		String imagesDirPath = Util.getAbsolutePathToImagesDir("emergencies");
 		Util.savePicture(imagesDirPath, emergencyId, fileInputStream);
@@ -51,5 +51,15 @@ public class EmergencyService {
 				gMap, territory, emergencyType, relativePathToImage, emergencyState);
 		
 	}
+	
+	@GET
+	@Path("/getAllEmergencies")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Emergency> getAllEmergency() throws FileNotFoundException, IOException {
+		EmergencyDAO emergencyDAO = EmergencyDAO.getInstance();
+		return emergencyDAO.getAll();
+		
+	}
+	
 
 }

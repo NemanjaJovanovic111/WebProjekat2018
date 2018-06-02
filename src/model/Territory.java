@@ -10,9 +10,7 @@ public class Territory {
 	private int area;
 	private int population;
 	
-	public Territory () {
-		
-	}
+	public Territory () {}
 	
 	public Territory(String id, String name, int area, int population) {
 		super();

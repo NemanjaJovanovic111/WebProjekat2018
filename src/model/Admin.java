@@ -19,7 +19,7 @@ public class Admin extends User {
 		return "Admin [getUsername()=" + getUsername() + ", getPassword()=" + getPassword() + ", getEmail()="
 				+ getEmail() + ", getFirstName()=" + getFirstName() + ", getLastName()=" + getLastName()
 				+ ", getProfilePicture()=" + getProfilePicture() + ", getUserType()=" + getUserType()
-				+ ", getPhoneNumber()=" + getPhoneNumber() + ", getTerritory()=" + getTerritory() + ", toString()="
+				+ ", getPhoneNumber()=" + getPhoneNumber() + ", getTerritory()=" + getTerritoryId() + ", toString()="
 				+ super.toString() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + "]";
 	}
 	

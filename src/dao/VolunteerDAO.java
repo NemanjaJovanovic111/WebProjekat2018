@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.List;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -22,7 +21,7 @@ public class VolunteerDAO {
 	
 	private static VolunteerDAO instance = null;
 	private static String filePath;
-	private ArrayList< Volunteer> volunteers = new ArrayList< Volunteer>();
+	private ArrayList<Volunteer> volunteers = new ArrayList<Volunteer>();
 	
 	public VolunteerDAO() throws FileNotFoundException, IOException {
 		filePath = Util.getAbsolutePathToDeployedApp() + "volunteers.json";
@@ -37,7 +36,9 @@ public class VolunteerDAO {
 	
 	private void loadVolunteers() throws FileNotFoundException, IOException {
 		String content = new String(Files.readAllBytes(Paths.get(filePath)));
-		volunteers = new ObjectMapper().readValue(content, new TypeReference<List<Volunteer>>(){});
+		System.out.println("don' work line below");
+		volunteers = new ObjectMapper().readValue(content, new TypeReference<ArrayList<Volunteer>>(){});
+		System.out.println(volunteers);
 	}
 	
 	private void saveVolunteers() throws JsonGenerationException, JsonMappingException, IOException {
@@ -62,7 +63,20 @@ public class VolunteerDAO {
 	}
 
 	public ArrayList<Volunteer> getAll() {
-				return volunteers;
+		return volunteers;
 	}
+	
+	public ArrayList<Volunteer> sameVolTerId(String terrId ){
+		ArrayList<Volunteer> lis = new ArrayList<>();
+		for (Volunteer v : volunteers){
+			if(v.getTerritoryId().equals(terrId)){
+				lis.add(v);	
+			}
+		}
+		return lis;
+	}
+		
+		
+
 
 }

@@ -10,14 +10,14 @@ public class User {
 	protected String profilePicture;
 	protected UserType userType;
 	protected String phoneNumber;
-	protected String territory;
+	protected String territoryId;
 	
 	public User() {
 		super();
 	}
 
 	public User(String username, String password, String email, String firstName, String lastName,
-			String profilePicture, UserType userType, String phoneNumber, String territory) {
+			String profilePicture, UserType userType, String phoneNumber, String territoryId) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -27,7 +27,7 @@ public class User {
 		this.profilePicture = profilePicture;
 		this.userType = userType;
 		this.phoneNumber = phoneNumber;
-		this.territory = territory;
+		this.territoryId = territoryId;
 	}
 
 	public String getUsername() {
@@ -94,19 +94,21 @@ public class User {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public String getTerritory() {
-		return territory;
+	
+
+	public String getTerritoryId() {
+		return territoryId;
 	}
 
-	public void setTerritory(String territory) {
-		this.territory = territory;
+	public void setTerritoryId(String territoryId) {
+		this.territoryId = territoryId;
 	}
 
 	@Override
 	public String toString() {
 		return "User [username=" + username + ", password=" + password + ", email=" + email + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", profilePicture=" + profilePicture + ", userType=" + userType
-				+ ", phoneNumber=" + phoneNumber + ", territory=" + territory + "]";
+				+ ", phoneNumber=" + phoneNumber + ", territory=" + territoryId + "]";
 	}
 	
 }

@@ -22,6 +22,7 @@ public class LoginService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public User login(LoginDTO loginDto) throws URISyntaxException, FileNotFoundException, IOException {
+		System.out.println(Util.getAbsolutePathToDeployedApp());
 		User user = UserDAO.login(loginDto.getUsername(), loginDto.getPassword());
 		return user;
 	}

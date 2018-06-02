@@ -20,7 +20,6 @@ import rest.Util;
 
 public class AdminDAO {
 	
-	
 	private static AdminDAO instance = null;
 	private static String filePath;
 	private ArrayList<Admin> admins = new ArrayList< Admin>();
@@ -57,8 +56,5 @@ public class AdminDAO {
 	public ArrayList<Admin> getAll() {
 		return admins;
 	}
-	
-	
-	
 
 }

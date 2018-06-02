@@ -1,6 +1,13 @@
-
-
 $(document).ready(function(){
+	
+	$.get("../WebProjekat/rest/territoryService/getAll", function(territories){
+		$.each(territories, function (index, territory) {
+		    $('#territories').append($('<option>', { 
+		        value: territory.id,
+		        text : territory.name
+		    }));
+		});
+    });
 	
 	$("#registerButton").click(function() {
 		
@@ -14,8 +21,7 @@ $(document).ready(function(){
 		formData.append('firstName', $("#name").val());
 		formData.append('lastName', $("#surname").val());
 		formData.append('phoneNumber', $("#phone_number").val());
-		formData.append('territory', "territory");
-		//formData.append('role', $("input[name=role]:checked").val()); ovako ce nesto biti za territory polje
+		formData.append('territory', $("#territories option:selected").val());
 		formData.append('image', document.querySelector('input[type=file]').files[0]);
 		
 		$.ajax({

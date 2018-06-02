@@ -65,6 +65,14 @@ import rest.Util;
 		public ArrayList<Territory> getAll(){
 			return territories;
 		}
+		
+		public Territory getOne(String territoryId) {
+			for(Territory t : territories) {
+				if(t.getId().equals(territoryId))
+					return t;
+			}
+			return null;
+		}
 	}
 
 

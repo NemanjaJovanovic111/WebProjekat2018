@@ -26,12 +26,13 @@ public class Emergency {
 		this.locationName = locationName;
 		this.municipalitie = municipalitie;
 		this.description = description;
-		this.dateTime = LocalDateTime.now();
+		this.dateTime = null;
 		this.gMapLoc = gMapLoc;
 		this.territory = territory;
 		this.emergencyType = emergencyType;
 		this.picture = picture;
 		this.emergencyState = emergencyState;
+		this.volunteer = "";
 	}
 	
 	public String getId() {

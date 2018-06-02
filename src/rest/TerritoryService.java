@@ -9,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import dao.TerritoryDAO;
@@ -31,15 +32,24 @@ public class TerritoryService {
 		else {
 			return territoryDAO.createTerritory(territoryDTO);
 		}
-		
 	}
+	
 	@GET
 	@Path("/getAll")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Territory> getAllTerritory() throws FileNotFoundException, IOException {
-		
 		TerritoryDAO territoryDAO = TerritoryDAO.getInstance();
-		return territoryDAO.getAll();
+		List<Territory> territories = territoryDAO.getAll();
+		return territories;
+	}
+	
+	@GET
+	@Path("/getOne")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Territory getOneTerritory(@QueryParam("territoryId") String territoryId) throws FileNotFoundException, IOException {
+		TerritoryDAO territoryDAO = TerritoryDAO.getInstance();
+		Territory territory = territoryDAO.getOne(territoryId);
+		return territory;
 		
 	}
 	
