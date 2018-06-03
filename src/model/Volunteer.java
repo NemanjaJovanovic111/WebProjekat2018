@@ -4,6 +4,10 @@ public class Volunteer extends User {
 	
 	private UserStatus userStatus = UserStatus.ACTIVE;
 
+	public Volunteer() {
+		super();
+	}
+
 	public Volunteer(String username, String password, String email, String firstName, String lastName,
 			String profilePicture, String phoneNumber, String territoryId) {
 		this.username = username;
@@ -21,7 +25,7 @@ public class Volunteer extends User {
 	public Volunteer(String username, String password, String email, String firstName, String lastName,
 			String profilePicture, UserType userType, String phoneNumber, String territoryId, UserStatus userStatus) {
 		super(username, password, email, firstName, lastName, profilePicture, userType, phoneNumber, territoryId);
-		this.userType = userType;
+		this.userStatus = userStatus;
 	}
 
 	public UserStatus getUserStatus() {

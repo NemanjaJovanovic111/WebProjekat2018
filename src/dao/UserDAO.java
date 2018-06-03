@@ -23,8 +23,7 @@ public class UserDAO {
 				
 				return u;
 			}
-		}
-		
+		}	
 		
 		for (User u : volunteers) {
 			if (u.getUsername().equals(username) && 

@@ -1,1 +1,12 @@
-[]
+[{
+  "username" : "vol",
+  "password" : "vol",
+  "email" : "vol",
+  "firstName" : "vol",
+  "lastName" : "vol",
+  "profilePicture" : "./users/vol.jpg",
+  "userType" : "VOLUNTEER",
+  "phoneNumber" : "123",
+  "territoryId" : "1",
+  "userStatus" : "ACTIVE"
+}]
