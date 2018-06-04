@@ -6,7 +6,7 @@ $(document).ready(function (){
 		formData.append("password",$("#password").val());
 		$.ajax({
 			  type: "POST",
-			  url: "../WebProjekat/rest/loginService/login",
+			  url: "../WebProjekat/rest/userService/login",
 			  data: JSON.stringify({
 				  "username" : $("#username").val(),
 				  "password" : $("#password").val()
@@ -25,7 +25,6 @@ $(document).ready(function (){
 					  if(sessionStorage.userType === "ADMIN") {
 						  
 						  window.location.replace("admin.html");
-
 						  
 					  }
 					  else if(sessionStorage.userType === "VOLUNTEER") {

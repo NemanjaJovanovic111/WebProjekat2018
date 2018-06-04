@@ -67,14 +67,7 @@ public class VolunteerDAO {
 		return volunteers;
 	}
 	
-//	public void update(Volunteer updatedVolunteer) {
-//		for(Volunteer vol : volunteers) {
-//			if(vol.getUsername().equals(updatedVolunteer.getUsername())) {
-//				vol.setEmail();
-//				
-//			}
-//		}
-//	}
+	
 
 	public void updateAll(List<Volunteer> updatedVolunters) {
 		for (Volunteer v : volunteers) {

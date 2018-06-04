@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import model.Admin;
 import model.User;
+import model.UserType;
 import model.Volunteer;
 
 public class UserDAO {
@@ -35,5 +36,43 @@ public class UserDAO {
 		
 		return null;
 	}
+
+	
+	
+	public static User edit(User updatedUser) throws FileNotFoundException, IOException {
+		
+		if(updatedUser.getUserType() == UserType.ADMIN) {
+			AdminDAO dao = AdminDAO.getInstance();
+			for(User u : dao.getAll()) {
+				if(u.getUsername().equals(updatedUser.getUsername())){
+					u.setPassword(updatedUser.getPassword());
+					u.setEmail(updatedUser.getEmail());
+					u.setFirstName(updatedUser.getFirstName());
+					u.setLastName(updatedUser.getLastName());
+					u.setProfilePicture(updatedUser.getProfilePicture());
+					u.setPhoneNumber(updatedUser.getPhoneNumber());
+					u.setTerritoryId(updatedUser.getTerritoryId());
+				}
+				return u;
+			}
+		}
+		else if(updatedUser.getUserType() == UserType.VOLUNTEER) {
+			VolunteerDAO dao = VolunteerDAO.getInstance();
+			for(User u : dao.getAll()) {
+				if(u.getUsername().equals(updatedUser.getUsername())){
+					u.setPassword(updatedUser.getPassword());
+					u.setEmail(updatedUser.getEmail());
+					u.setFirstName(updatedUser.getFirstName());
+					u.setLastName(updatedUser.getLastName());
+					u.setProfilePicture(updatedUser.getProfilePicture());
+					u.setPhoneNumber(updatedUser.getPhoneNumber());
+					u.setTerritoryId(updatedUser.getTerritoryId());
+				}
+				return u;
+			}
+		}
+		return null;
+	}
+			
 
 }
