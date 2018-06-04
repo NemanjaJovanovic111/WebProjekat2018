@@ -22,7 +22,6 @@ public class VolunteerService {
 	@Path("/getVolWithTerritoryId")
 	@Produces(MediaType.APPLICATION_JSON)
 	public static List<Volunteer> getVolWithTerritoryId(@QueryParam("territoryId") String territoryId) throws FileNotFoundException, IOException {
-		
 		VolunteerDAO volunteerDAO = VolunteerDAO.getInstance();
 		List<Volunteer> volunteers = volunteerDAO.sameVolTerId(territoryId);
 		return volunteers;
@@ -43,15 +42,7 @@ public class VolunteerService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void updateVol(List<Volunteer> vol) throws FileNotFoundException, IOException{
 		VolunteerDAO volunteerDAO  = VolunteerDAO.getInstance();
-		
 		volunteerDAO.updateAll(vol);
-		
-		
-		
-			
-			
 	}
-
-		
 	
 }

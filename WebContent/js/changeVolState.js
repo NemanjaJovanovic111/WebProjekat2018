@@ -3,7 +3,6 @@ $(document).ready(function(){
 	getAllVolunteers();
 	
 	$("#saveButton").click (function(){
-		alert("kek yoma");
 		$.ajax({
 			url: "../WebProjekat/rest/volunteerService/updateVolunteer",
 			type: "POST",
@@ -13,12 +12,6 @@ $(document).ready(function(){
 				window.location.reload();
 			}
 		});
-		
-		
-		
-		
-		
-		
 	});
 	
 });
@@ -69,7 +62,6 @@ function addVolinteerToTable(index, volunteer) {
 						 value: "ACTIVE",
 						 text: "ACTIVE",
 						 selected: volunteer.userStatus === 'ACTIVE'
-						 
 					}),
 					$('<option>', {
 						 value: "BLOCK",

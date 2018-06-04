@@ -2,10 +2,31 @@ $(document).ready(function(){
 	
 	getAllEmergencies();
 	
+	$("#saveButton").click (function() {
+		console.log(controller.emSituations);
+		
+		$.ajax({
+			url: "../WebProjekat/rest/emergencyService/updateEmergency",
+			type: "POST",
+			contentType: "application/json",
+			data: JSON.stringify(controller.emSituations),
+			success: function() {
+				window.location.reload();
+			}
+		});
+	});
+	
+
+	
 });
+
+var controller = {
+	emSituations : []
+};
 
 function getAllEmergencies() {
 	$.get("../WebProjekat/rest/emergencyService/getAllEmergencies", function(emergencies){
+		controller.emSituations = emergencies;
 		$.each(emergencies, function (index, emergency) {
 		    addEmergencyToTable(index, emergency);
 		});
@@ -39,18 +60,20 @@ function addEmergencyToTable(index, emergency) {
 				text : emergency.picture
 			}),
 			$('<td>').append(
-				$('<select>').append(
+				$('<select onchange="setEmState(\'' + emergency.id + '\', this.value)">').append(
 					$('<option>', {
 						 value: "ACTIVE",
-						 text: "ACTIVE"
+						 text: "ACTIVE",
+						 selected: emergency.status === 'ACTIVE'
 					}),
 					$('<option>', {
 						 value: "ARCHIVE",
-						 text: "ARCHIVE"
+						 text: "ARCHIVE",
+						 selected: emergency.status === 'ARCHIVE'
 					})
 				
 			)),
-			$('<select id="cb' + index + '">')
+			$('<select id="cb' + index + '" onchange="setEmVolunteer(\'' + emergency.id + '\', this.value)">')
 		)
 	)
 	
@@ -74,14 +97,35 @@ function addEmergencyToTable(index, emergency) {
 		type: "GET",
 		data: {"territoryId" : emergency.territory},
 		success: function(volunteers) {
+			
+			if(emergency.volunteer == undefined || emergency.volunteer == "")
+				emergency.volunteer = volunteers[0].username;
+			
 			$.each(volunteers, function (i, volunteer) {
-				console.log(volunteer);
 				$('#cb' + index).append(
 					$('<option>', { 
-						text : volunteer.username
+						value: volunteer.username,
+						text : volunteer.username,
+						selected: emergency.volunteer === volunteer.id
 					})
 				);
 			});
 		}
 	});
+}
+
+function setEmState(emirgencyId, emergencyState) {
+	for(var i = 0; i < controller.emSituations.length; i++) {
+		if(controller.emSituations[i].id === emirgencyId) {
+			controller.emSituations[i].emergencyState = emergencyState;
+		}
+	}
+}
+
+function setEmVolunteer(emirgencyId, volunteerId) {
+	for(var i = 0; i < controller.emSituations.length; i++) {
+		if(controller.emSituations[i].id === emirgencyId) {
+			controller.emSituations[i].volunteer = volunteerId;
+		}
+	}
 }

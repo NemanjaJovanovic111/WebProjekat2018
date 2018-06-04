@@ -37,15 +37,7 @@ public class VolunteerDAO {
 
 	private void loadVolunteers() throws FileNotFoundException, IOException {
 		String content = new String(Files.readAllBytes(Paths.get(filePath)));
-		System.out.println("don' work line below");
-		volunteers = new ObjectMapper().readValue(content, new TypeReference<ArrayList<Volunteer>>() {
-		});
-
-		// dummy data
-		// volunteers.add(new Volunteer("vol", "vol", "vol", "vol", "vol",
-		// "vol", UserType.VOLUNTEER, "123", "1", UserStatus.ACTIVE));
-		// volunteers.add(new Volunteer("z", "z", "z", "z", "z", "z",
-		// UserType.VOLUNTEER, "123", "2", UserStatus.ACTIVE));
+		volunteers = new ObjectMapper().readValue(content, new TypeReference<ArrayList<Volunteer>>(){});
 	}
 
 	private void saveVolunteers() throws JsonGenerationException, JsonMappingException, IOException {
@@ -74,6 +66,15 @@ public class VolunteerDAO {
 	public ArrayList<Volunteer> getAll() {
 		return volunteers;
 	}
+	
+//	public void update(Volunteer updatedVolunteer) {
+//		for(Volunteer vol : volunteers) {
+//			if(vol.getUsername().equals(updatedVolunteer.getUsername())) {
+//				vol.setEmail();
+//				
+//			}
+//		}
+//	}
 
 	public void updateAll(List<Volunteer> updatedVolunters) {
 		for (Volunteer v : volunteers) {

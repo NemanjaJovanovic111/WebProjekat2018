@@ -59,5 +59,31 @@ public class EmergencyDAO {
 	public ArrayList<Emergency> getAll(){
 		return emergencies;
 	}
+	
+	public void updateAll(List<Emergency> updatedEmergency) {
+		for (Emergency e : emergencies) {
+			for (Emergency updatedEm : updatedEmergency) {
+				if (updatedEm.getId().equals(e.getId())) {
+					e.setEmergencyState(updatedEm.getEmergencyState());
+					e.setVolunteer(updatedEm.getVolunteer());
+				}
+			}
+
+		}
+		try {
+			saveEmergencies();
+			loadEmergencies();
+		} catch (JsonGenerationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 
 }

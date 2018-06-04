@@ -61,5 +61,13 @@ public class EmergencyService {
 		
 	}
 	
+	@POST
+	@Path("/updateEmergency")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void updateEmergency(List<Emergency> emergencies) throws FileNotFoundException, IOException{
+		System.out.println("got it");
+		EmergencyDAO emergencyDAO  = EmergencyDAO.getInstance();
+		emergencyDAO.updateAll(emergencies);
+	}
 
 }
