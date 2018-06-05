@@ -28,9 +28,12 @@ $(document).ready(function (){
 						  
 					  }
 					  else if(sessionStorage.userType === "VOLUNTEER") {
-						  
-						  window.location.replace("emergency.html");
+						  if(data.userStatus !== "BLOCK")
+							  window.location.replace("volunteerPage.html");
+						  else
+							  alert("YOUR ACCOUNT HAS BEEN BLOCKED BY AN ADMIN :(");
 					  }
+					  
 				  }
 				  else {
 					  alert("Invalid username/password combination!");

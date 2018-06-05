@@ -4,7 +4,7 @@ $(document).ready(function() {
 	loadTerritories();
 	
 	
-	$("#saveEditVolButton").click(function() {
+	$("#saveEditTerbutton").click(function() {
 		
 		var formData = new FormData();
 		formData.append('username', sessionStorage.username);

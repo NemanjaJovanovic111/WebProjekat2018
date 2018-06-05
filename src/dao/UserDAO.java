@@ -39,39 +39,59 @@ public class UserDAO {
 
 	
 	
-	public static User edit(User updatedUser) throws FileNotFoundException, IOException {
+	public static User edit(String username,
+							String newPassword,
+							String oldPassword,
+							String email,
+							String firstName,
+							String lastName,
+							String phoneNumber,
+							String territoryId,
+							String imagePath,
+							UserType userType) throws FileNotFoundException, IOException {
 		
-		if(updatedUser.getUserType() == UserType.ADMIN) {
+		User updatedUser = null;
+		if(userType == UserType.ADMIN) {
 			AdminDAO dao = AdminDAO.getInstance();
 			for(User u : dao.getAll()) {
-				if(u.getUsername().equals(updatedUser.getUsername())){
-					u.setPassword(updatedUser.getPassword());
-					u.setEmail(updatedUser.getEmail());
-					u.setFirstName(updatedUser.getFirstName());
-					u.setLastName(updatedUser.getLastName());
-					u.setProfilePicture(updatedUser.getProfilePicture());
-					u.setPhoneNumber(updatedUser.getPhoneNumber());
-					u.setTerritoryId(updatedUser.getTerritoryId());
+				if(u.getUsername().equals(username)) {
+					updatedUser = editUserFields(u, newPassword, oldPassword, email, firstName, 
+							lastName, imagePath, phoneNumber, territoryId);
+					dao.saveAdmins();
+					break;
 				}
-				return u;
 			}
 		}
-		else if(updatedUser.getUserType() == UserType.VOLUNTEER) {
+		else if(userType == UserType.VOLUNTEER) {
 			VolunteerDAO dao = VolunteerDAO.getInstance();
 			for(User u : dao.getAll()) {
-				if(u.getUsername().equals(updatedUser.getUsername())){
-					u.setPassword(updatedUser.getPassword());
-					u.setEmail(updatedUser.getEmail());
-					u.setFirstName(updatedUser.getFirstName());
-					u.setLastName(updatedUser.getLastName());
-					u.setProfilePicture(updatedUser.getProfilePicture());
-					u.setPhoneNumber(updatedUser.getPhoneNumber());
-					u.setTerritoryId(updatedUser.getTerritoryId());
+				if(u.getUsername().equals(username)){
+					updatedUser = editUserFields(u, newPassword, oldPassword, email, firstName, 
+							lastName, imagePath, phoneNumber, territoryId);
+					dao.saveVolunteers();
+					break;
 				}
-				return u;
 			}
 		}
-		return null;
+		return updatedUser;
+	}
+	
+	private static User editUserFields(User userToEdit, String newPassword, String oldPassword, String email,
+			String firstName, String lastName, String imagePath, String phoneNumber, String territoryId) {
+		if(!newPassword.equals("") && userToEdit.getPassword().equals(oldPassword)) {
+			userToEdit.setPassword(newPassword);
+		}
+		if(!imagePath.equals("")) {
+			userToEdit.setProfilePicture(imagePath);
+		}
+		
+		userToEdit.setEmail(email);
+		userToEdit.setFirstName(firstName);
+		userToEdit.setLastName(lastName);
+		userToEdit.setPhoneNumber(phoneNumber);
+		userToEdit.setTerritoryId(territoryId);
+		
+		return userToEdit;
 	}
 			
 

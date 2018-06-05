@@ -38,7 +38,9 @@ public class Volunteer extends User {
 
 	@Override
 	public String toString() {
-		return "Volunteer [userStatus=" + userStatus + "]";
+		return "Volunteer [userStatus=" + userStatus + ", username=" + username + ", password=" + password + ", email="
+				+ email + ", firstName=" + firstName + ", lastName=" + lastName + ", profilePicture=" + profilePicture
+				+ ", userType=" + userType + ", phoneNumber=" + phoneNumber + ", territoryId=" + territoryId + "]";
 	}
 	
 }

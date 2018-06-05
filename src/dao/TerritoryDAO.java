@@ -17,6 +17,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 
 import dto.TerritoryDTO;
 import model.Territory;
+import model.Volunteer;
 import rest.Util;
 
 	public class TerritoryDAO {
@@ -72,6 +73,37 @@ import rest.Util;
 					return t;
 			}
 			return null;
+		}
+		
+		public void deleteTerritories(List<String> territoryIds) throws JsonGenerationException, JsonMappingException, IOException {
+			
+			for(String territoryId : territoryIds) {
+				for(Territory t: territories) {
+					if(t.getId().equals(territoryId)) {
+						territories.remove(t);
+						break;
+					}
+				}
+			}
+			
+			saveTerritories();
+			
+		}
+		
+		public void updateAllTerritories(List<Territory> updatedTerritory) throws JsonGenerationException, JsonMappingException, IOException {
+			for (Territory t : territories) {
+				for (Territory updated : updatedTerritory) {
+					if (t.getId().equals(updated.getId())) {
+						t.setArea(updated.getArea());
+						t.setName(updated.getName());
+						t.setPopulation(updated.getPopulation());
+					}
+				}
+
+			}
+
+			saveTerritories();
+		
 		}
 	}
 

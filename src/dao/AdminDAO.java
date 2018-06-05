@@ -1,5 +1,6 @@
 package dao;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -7,8 +8,12 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 
 import model.Admin;
 import rest.Util;
@@ -33,6 +38,11 @@ public class AdminDAO {
 	private void loadAdmins() throws FileNotFoundException, IOException {
 		String content = new String(Files.readAllBytes(Paths.get(filePath)));
 		admins = new ObjectMapper().readValue(content, new TypeReference<List<Admin>>(){});
+	}
+	
+	public void saveAdmins() throws JsonGenerationException, JsonMappingException, IOException {
+		ObjectWriter writer = new ObjectMapper().writer(new DefaultPrettyPrinter());
+		writer.writeValue(new File(filePath), admins);
 	}
 
 	public boolean adminExists(String username) {

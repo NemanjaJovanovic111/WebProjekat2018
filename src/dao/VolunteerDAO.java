@@ -40,7 +40,7 @@ public class VolunteerDAO {
 		volunteers = new ObjectMapper().readValue(content, new TypeReference<ArrayList<Volunteer>>(){});
 	}
 
-	private void saveVolunteers() throws JsonGenerationException, JsonMappingException, IOException {
+	public void saveVolunteers() throws JsonGenerationException, JsonMappingException, IOException {
 		ObjectWriter writer = new ObjectMapper().writer(new DefaultPrettyPrinter());
 		writer.writeValue(new File(filePath), volunteers);
 	}
@@ -69,7 +69,7 @@ public class VolunteerDAO {
 	
 	
 
-	public void updateAll(List<Volunteer> updatedVolunters) {
+	public void updateAll(List<Volunteer> updatedVolunters) throws JsonGenerationException, JsonMappingException, IOException {
 		for (Volunteer v : volunteers) {
 			for (Volunteer updated : updatedVolunters) {
 				if (updated.getUsername().equals(v.getUsername())) {
@@ -78,19 +78,9 @@ public class VolunteerDAO {
 			}
 
 		}
-		try {
-			saveVolunteers();
-		} catch (JsonGenerationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
+		saveVolunteers();
+	
 	}
 
 	public ArrayList<Volunteer> sameVolTerId(String terrId) {
