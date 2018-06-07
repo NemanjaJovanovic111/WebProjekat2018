@@ -23,16 +23,17 @@ var controller = {
 function loadTerritoriesInTable() {
 	$.get("../WebProjekat/rest/territoryService/getAll", function(territories) {
 		$.each(territories, function (index, territory) {
-		    $('#deleteTerritoryTable').append(
-		    	
-		    	$('<tr>').append(
-		    		$('<td>', {text: territory.name}),
-		    		$('<td>').append(
-		    			$('<input onchange="setForDeletion(this);" type="checkbox", value="' + territory.id +'">')
-		    		)
-		    	)
-		    	
-		    )
+			if(territory.id !== "null"){
+			    $('#deleteTerritoryTable').append(
+			    	
+			    	$('<tr>').append(
+			    		$('<td>', {text: territory.name}),
+			    		$('<td>').append(
+			    			$('<input onchange="setForDeletion(this);" type="checkbox", value="' + territory.id +'">')
+			    		)
+			    	)    	
+			    )
+			}
 		});
     });
 }

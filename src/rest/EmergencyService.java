@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -67,6 +68,14 @@ public class EmergencyService {
 	public void updateEmergency(List<Emergency> emergencies) throws FileNotFoundException, IOException{
 		EmergencyDAO emergencyDAO  = EmergencyDAO.getInstance();
 		emergencyDAO.updateAll(emergencies);
+	}
+	
+	@GET
+	@Path("/getActive")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<Emergency> getActive() throws FileNotFoundException, IOException {
+		EmergencyDAO emergencyDAO = EmergencyDAO.getInstance();
+		return emergencyDAO.getActive();
 	}
 
 }

@@ -1,9 +1,7 @@
 $(document).ready(function (){
 	
 	$("#loginButton").click(function() {
-		var formData  = new FormData();
-		formData.append("username",$("#username").val());
-		formData.append("password",$("#password").val());
+		
 		$.ajax({
 			  type: "POST",
 			  url: "../WebProjekat/rest/userService/login",

@@ -1,6 +1,6 @@
 package model;
 
-import java.time.LocalDateTime;
+import org.joda.time.DateTime;
 
 public class Emergency {
 	
@@ -8,7 +8,7 @@ public class Emergency {
 	String locationName;
 	String municipalitie;
 	String description;
-	LocalDateTime dateTime;
+	DateTime dateTime;
 	String gMapLoc;
 	String territory;
 	EmergencyType emergencyType;
@@ -26,7 +26,7 @@ public class Emergency {
 		this.locationName = locationName;
 		this.municipalitie = municipalitie;
 		this.description = description;
-		this.dateTime = null;
+		this.dateTime = DateTime.now();
 		this.gMapLoc = gMapLoc;
 		this.territory = territory;
 		this.emergencyType = emergencyType;
@@ -66,12 +66,12 @@ public class Emergency {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	public LocalDateTime getDateTime() {
+	
+	public DateTime getDateTime() {
 		return dateTime;
 	}
 
-	public void setDateTime(LocalDateTime dateTime) {
+	public void setDateTime(DateTime dateTime) {
 		this.dateTime = dateTime;
 	}
 

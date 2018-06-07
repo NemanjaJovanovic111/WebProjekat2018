@@ -93,6 +93,32 @@ public class UserDAO {
 		
 		return userToEdit;
 	}
+	
+	public static void setTerritoriesToNull(String territoryId) throws FileNotFoundException, IOException {
+		AdminDAO adminDAO = AdminDAO.getInstance();
+		for(Admin a :adminDAO.getAll() ){
+			if(a.getTerritoryId().equals(territoryId)){
+				
+				a.setTerritoryId("null");
+			
+			}
+			
+			
+		}
+		
+		VolunteerDAO volunteerDAO  = VolunteerDAO.getInstance();
+		for(Volunteer v : volunteerDAO.getAll()){
+				if(v.getTerritoryId().equals(territoryId)){
+				
+				 v.setTerritoryId("null");
+			
+			}
+		}
+		
+	}
+	
+	
+	
 			
 
 }

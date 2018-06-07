@@ -50,9 +50,7 @@ public class TerritoryService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Territory getOneTerritory(@QueryParam("territoryId") String territoryId) throws FileNotFoundException, IOException {
 		TerritoryDAO territoryDAO = TerritoryDAO.getInstance();
-		System.out.println(territoryId);
 		Territory territory = territoryDAO.getOne(territoryId);
-		System.out.println(territory);
 		return territory;
 		
 	}
@@ -61,7 +59,6 @@ public class TerritoryService {
 	@Path("/deleteTerritories")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void deleteTerritories(List<String> territoryIds) throws FileNotFoundException, IOException {
-		System.out.println("afeafeaea");
 		TerritoryDAO territoryDAO = TerritoryDAO.getInstance();
 		territoryDAO.deleteTerritories(territoryIds);
 	}

@@ -14,6 +14,7 @@ import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import model.Emergency;
 import model.EmergencyState;
@@ -39,11 +40,11 @@ public class EmergencyDAO {
 	
 	private void loadEmergencies() throws FileNotFoundException, IOException {
 		String content = new String(Files.readAllBytes(Paths.get(filePath)));
-		emergencies = new ObjectMapper().readValue(content, new TypeReference<List<Emergency>>(){});
+		emergencies = new ObjectMapper().configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS , false).readValue(content, new TypeReference<List<Emergency>>(){});
 	}
 	
 	private void saveEmergencies() throws JsonGenerationException, JsonMappingException, IOException {
-		ObjectWriter writer = new ObjectMapper().writer(new DefaultPrettyPrinter());
+		ObjectWriter writer = new ObjectMapper().configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS , false).writer(new DefaultPrettyPrinter());
 		writer.writeValue(new File(filePath), emergencies);
 	}
 	
@@ -60,7 +61,7 @@ public class EmergencyDAO {
 		return emergencies;
 	}
 	
-	public void updateAll(List<Emergency> updatedEmergency) {
+	public void updateAll(List<Emergency> updatedEmergency) throws JsonGenerationException, JsonMappingException, IOException {
 		for (Emergency e : emergencies) {
 			for (Emergency updatedEm : updatedEmergency) {
 				if (updatedEm.getId().equals(e.getId())) {
@@ -70,20 +71,18 @@ public class EmergencyDAO {
 			}
 
 		}
-		try {
-			saveEmergencies();
-			loadEmergencies();
-		} catch (JsonGenerationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		saveEmergencies();
+		loadEmergencies();
+		
+	}
+	
+	public ArrayList<Emergency> getActive() {
+		ArrayList<Emergency> activeEmergencies = new ArrayList<Emergency>();
+		for(Emergency e : emergencies) {
+			if(e.getEmergencyState() == EmergencyState.ACTIVE)
+				activeEmergencies.add(e);
 		}
-
+		return activeEmergencies;
 	}
 
 }

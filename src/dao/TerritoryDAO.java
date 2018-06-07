@@ -81,6 +81,8 @@ import rest.Util;
 				for(Territory t: territories) {
 					if(t.getId().equals(territoryId)) {
 						territories.remove(t);
+						UserDAO.setTerritoriesToNull(territoryId);
+						
 						break;
 					}
 				}

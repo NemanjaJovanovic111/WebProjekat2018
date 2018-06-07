@@ -97,9 +97,10 @@ function addEmergencyToTable(index, emergency) {
 		type: "GET",
 		data: {"territoryId" : emergency.territory},
 		success: function(volunteers) {
-			
-			if(emergency.volunteer == undefined || emergency.volunteer == "")
-				emergency.volunteer = volunteers[0].username;
+			if(volunteers.length != 0) {
+				if(emergency.volunteer == undefined || emergency.volunteer == "")
+					emergency.volunteer = volunteers[0].username;
+			}
 			
 			$.each(volunteers, function (i, volunteer) {
 				$('#cb' + index).append(

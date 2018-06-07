@@ -2,17 +2,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="./js/editTerritory.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
-<fieldset>
-	<legend>Edit territory : </legend>
-	
-	Name  : <input type="text" id="name"/><br/>
-	Area  : <input type="text" id="area"/><br/>
-	Population  : <input type="text" id="population"/><br/>
-	<button id="saveEditTerbutton" type="button">SAVE</button>
-</fieldset>		
-
+<h1> Edit Territory</h1>
+	<table id="editTerritoryTable" width="100%">
+		<tr>
+			<th>Name</th>
+			<th>Area</th>
+			<th>population</th>
+		</tr>
+	</table>
+<button id ="saveEditTerritory" >SAVE  </button>
 </body>
 </html>

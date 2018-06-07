@@ -1,58 +1,73 @@
-$(document).ready(function() {
-		
-	loadDataToTextFields();
-	loadTerritories();
+$(document).ready(function(){
 	
+	getAll();
 	
-	$("#saveEditTerbutton").click(function() {
-		
-		var formData = new FormData();
-		formData.append('username', sessionStorage.username);
-		formData.append('newPassword', $("#newPassword").val());
-		formData.append('oldPassword', $("#oldPassword").val());
-		formData.append('email', $("#email").val());
-		formData.append('firstName', $("#firstName").val());
-		formData.append('lastName', $("#lastName").val());
-		formData.append('image', document.querySelector('input[type=file]').files[0]);
-		formData.append('phoneNumber', $("#phoneNumber").val());
-		formData.append('territoryId', $("#territories option:selected").val());
-		formData.append('userType', sessionStorage.userType);
-		
+	$("#saveEditTerritory").click (function(){
 		$.ajax({
-	      url: "../WebProjekat/rest/userService/updateUser",
-	      type: 'POST',
-	      xhr: function() {  // Custom XMLHttpRequest
-	        var myXhr = $.ajaxSettings.xhr();
-	        return myXhr;
-	      },
-	      success: function(data) {
-	    	  console.log("SERVER RESPONSE ARRIVED!");
-	      },
-	      data: formData,
-	      cache: false,
-	      contentType: false,
-	      processData: false
-	    });
-		
+			url: "../WebProjekat/rest/territoryService/updateTerritory",
+			type: "POST",
+			contentType: "application/json",
+			data: JSON.stringify(controller.territories),
+			success: function() {
+				window.location.reload();
+			}
+		});
 	});
 	
 });
 
-function loadDataToTextFields() {
-	$("#email").val(sessionStorage.email);
-	$("#firstName").val(sessionStorage.firstName);
-	$("#lastName").val(sessionStorage.lastName);
-	$("#phoneNumber").val(sessionStorage.phoneNumber);
-}
+var controller = {
+	territories: []
+};
 
-function loadTerritories() {
+function getAll() {
 	$.get("../WebProjekat/rest/territoryService/getAll", function(territories){
+		controller.territories = territories;
 		$.each(territories, function (index, territory) {
-		    $('#territories').append($('<option>', { 
-		        value: territory.id,
-		        text : territory.name,
-		        selected: sessionStorage.territory === territory.id
-		    }));
+			if (territory.id !== "null")
+				addTerritoryToTable(index, territory);
 		});
     });
 }
+
+
+function addTerritoryToTable(index, territory) {
+	$('#editTerritoryTable').append(
+		$('<tr>').append(
+			$('<td>').append(
+				$('<input type="text" value="' + territory.name + '" onchange="setTerritoryName(\'' + territory.id + '\', this.value)">')
+			),
+			$('<td>').append(
+				$('<input type="number" value="' + territory.area + '" onchange="setTerritoryArea(\'' + territory.id + '\', this.value)">')
+			),
+			$('<td>').append(
+					$('<input type="number" value="' + territory.population + '" onchange="setTerritoryPopulation(\'' + territory.id + '\', this.value)">')
+			)
+		)
+	)
+}
+
+function setTerritoryName(territoryId, name) {
+	for(var i = 0; i < controller.territories.length; i++) {
+		if(controller.territories[i].id === territoryId) {
+			controller.territories[i].name = name;
+		}
+	}
+}
+
+function setTerritoryArea(territoryId, area) {
+	for(var i = 0; i < controller.territories.length; i++) {
+		if(controller.territories[i].id === territoryId) {
+			controller.territories[i].area = area;
+		}
+	}
+}
+
+function setTerritoryPopulation(territoryId, population) {
+	for(var i = 0; i < controller.territories.length; i++) {
+		if(controller.territories[i].id === territoryId) {
+			controller.territories[i].population = population;
+		}
+	}
+}
+
