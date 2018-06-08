@@ -8,7 +8,7 @@ public class Emergency {
 	String locationName;
 	String municipalitie;
 	String description;
-	DateTime dateTime;
+	String dateTime;
 	String gMapLoc;
 	String territory;
 	EmergencyType emergencyType;
@@ -26,7 +26,7 @@ public class Emergency {
 		this.locationName = locationName;
 		this.municipalitie = municipalitie;
 		this.description = description;
-		this.dateTime = DateTime.now();
+		setDateTime();
 		this.gMapLoc = gMapLoc;
 		this.territory = territory;
 		this.emergencyType = emergencyType;
@@ -66,13 +66,24 @@ public class Emergency {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	public DateTime getDateTime() {
+
+	public String getDateTime() {
 		return dateTime;
 	}
 
-	public void setDateTime(DateTime dateTime) {
+	public void setDateTime(String dateTime) {
 		this.dateTime = dateTime;
+	}
+	
+	public void setDateTime() {
+		DateTime currentDateTime = DateTime.now();
+		String year = Integer.toString(currentDateTime.getYear());
+		String month = Integer.toString(currentDateTime.getMonthOfYear());
+		String day = Integer.toString(currentDateTime.getDayOfMonth());
+		String hour = Integer.toString(currentDateTime.getHourOfDay());
+		String minute = Integer.toString(currentDateTime.getMinuteOfHour());
+		
+		setDateTime(day + "." + month + "." + year + " " + hour + ":" + minute);
 	}
 
 	public String getgMapLoc() {

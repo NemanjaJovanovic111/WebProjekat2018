@@ -84,5 +84,32 @@ public class EmergencyDAO {
 		}
 		return activeEmergencies;
 	}
+	
+	public ArrayList<Emergency> getByType(EmergencyType type) { 
+		ArrayList<Emergency> emergencies = new ArrayList<Emergency>();
+		for(Emergency e : this.emergencies) {
+			if(e.getEmergencyType() == type && e.getEmergencyState() == EmergencyState.ACTIVE)
+				emergencies.add(e);
+		}
+		return emergencies;
+	}
+	
+	public ArrayList<Emergency> getByTerritory(String terrId) {
+		ArrayList<Emergency> emergencies = new ArrayList<Emergency>();
+		for(Emergency e : this.emergencies) {
+			if(e.getTerritory().equals(terrId) && e.getEmergencyState() == EmergencyState.ACTIVE)
+				emergencies.add(e);
+		}
+		return emergencies;
+	}
+	
+	public ArrayList<Emergency> getByVolUsername(String volUsername) {
+		ArrayList<Emergency> emergencies = new ArrayList<Emergency>();
+		for(Emergency e : this.emergencies) {
+			if(e.getVolunteer().equals(volUsername))
+				emergencies.add(e);
+		}
+		return emergencies;
+	}
 
 }

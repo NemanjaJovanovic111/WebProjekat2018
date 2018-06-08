@@ -7,16 +7,21 @@
 	<script src="./js/volunteerPage.js"></script>
 </head>
 <body>
-<input id="inp" type="button" value="Create Emergency" onclick="location.href='emergency.html';" />
-<input id="inp" type="button" value="Edit your profile" onclick="location.href='editProfile.html';" />
-<input id="inp" type="button" value="My emergency situations" onclick="location.href='myEmergencySituation.html';" /><br>
+<input type="button" value="Create Emergency" onclick="location.href='emergency.html';" />
+<input type="button" value="Edit your profile" onclick="location.href='editProfile.html';" />
+<input type="button" value="My emergency situations" onclick="location.href='myEmergencySituation.html';" /><br><br>
 
-<select id = "urgencySelect">
-	<option value = "2">Blue</option>
-	<option value = "1">Orange</option>
-	<option value = "0">Red</option>
+<select id = "emergencyType">
+	<option value = "RED">RED</option>
+	<option value = "ORANGE">ORANGE</option>
+	<option value = "YELLOW">YELLOW</option>
 </select>
-<button onclick = "urgencyFilter()">Filter by Urgency</button><br>
+<button onclick = "typeFilter()">Filter by Type</button><br>
+
+<select id = "territories"></select> 
+<button onclick= "territoryFilter()">Filter by Territory</button><br>
+
+<button onclick = "dateFilter()">Filter by Date</button><br><br>
 
 
 <table id="emergencies">

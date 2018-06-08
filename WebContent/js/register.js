@@ -1,13 +1,6 @@
 $(document).ready(function(){
 	
-	$.get("../WebProjekat/rest/territoryService/getAll", function(territories){
-		$.each(territories, function (index, territory) {
-		    $('#territories').append($('<option>', { 
-		        value: territory.id,
-		        text : territory.name
-		    }));
-		});
-    });
+	loadTerritories();
 	
 	$("#registerButton").click(function() {
 		
@@ -53,4 +46,15 @@ function passwordCheck() {
 	}
 	return true;
 	
+}
+
+function loadTerritories() {
+	$.get("../WebProjekat/rest/territoryService/getAll", function(territories){
+		$.each(territories, function (index, territory) {
+		    $('#territories').append($('<option>', { 
+		        value: territory.id,
+		        text : territory.name
+		    }));
+		});
+    });
 }

@@ -13,6 +13,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
@@ -77,5 +78,30 @@ public class EmergencyService {
 		EmergencyDAO emergencyDAO = EmergencyDAO.getInstance();
 		return emergencyDAO.getActive();
 	}
+	
+	@GET
+	@Path("/getByType")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<Emergency> getByType(@QueryParam("type") EmergencyType type) throws FileNotFoundException, IOException {
+		EmergencyDAO emergencyDAO = EmergencyDAO.getInstance();
+		return emergencyDAO.getByType(type);
+	}
+	
+	@GET
+	@Path("/getByTerritory")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<Emergency> getByTerritory(@QueryParam("territory") String terrId) throws FileNotFoundException, IOException {
+		EmergencyDAO emergencyDAO = EmergencyDAO.getInstance();
+		return emergencyDAO.getByTerritory(terrId);
+	}
+	
+	@GET
+	@Path("/getByVolUsername")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<Emergency> getByVolUsername(@QueryParam("volUsername") String volUsername) throws FileNotFoundException, IOException {
+		EmergencyDAO emergencyDAO = EmergencyDAO.getInstance();
+		return emergencyDAO.getByVolUsername(volUsername);
+	}
+
 
 }
