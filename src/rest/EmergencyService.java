@@ -42,13 +42,19 @@ public class EmergencyService {
 			@FormDataParam("image") FormDataContentDisposition contentDispositionHeader,
 			@FormDataParam("emergencyState") EmergencyState emergencyState
 	) throws URISyntaxException, FileNotFoundException, IOException {
+		
 		String emergencyId = UUID.randomUUID().toString();
-		String imagesDirPath = Util.getAbsolutePathToImagesDir("emergencies");
-		Util.savePicture(imagesDirPath, emergencyId, fileInputStream);
+		String relativePathToImage = "";
+		if(contentDispositionHeader.getFileName() != null) {
+			String imagesDirPath = Util.getAbsolutePathToImagesDir("emergencies");
+			Util.savePicture(imagesDirPath, emergencyId, fileInputStream);
+			relativePathToImage = Util.getRelativePathToImage("emergencies", emergencyId);
+		}
+		else {
+			relativePathToImage = "./images/default-emergency.jpeg";
+		}
 		
 		EmergencyDAO emergencyDAO = EmergencyDAO.getInstance();
-		String relativePathToImage = Util.getRelativePathToImage("emergencies", emergencyId);
-		
 		return emergencyDAO.createEmergency(emergencyId, locationName, municipalitie, description,
 				gMap, territory, emergencyType, relativePathToImage, emergencyState);
 		

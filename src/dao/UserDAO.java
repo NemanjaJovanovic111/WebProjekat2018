@@ -37,8 +37,6 @@ public class UserDAO {
 		return null;
 	}
 
-	
-	
 	public static User edit(String username,
 							String newPassword,
 							String oldPassword,
@@ -117,7 +115,21 @@ public class UserDAO {
 		
 	}
 	
-	
+	public static User getOne(String username) throws FileNotFoundException, IOException {
+		AdminDAO adminDAO = AdminDAO.getInstance();
+		for(User u : adminDAO.getAll()) {
+			if(u.getUsername().equals(username))
+				return u;
+		}
+		
+		VolunteerDAO volunteerDAO = VolunteerDAO.getInstance();
+		for(User u : volunteerDAO.getAll()) {
+			if(u.getUsername().equals(username))
+				return u;
+		}
+		
+		return null;
+	}
 	
 			
 

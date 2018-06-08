@@ -3,9 +3,36 @@
 	<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="./js/viewEmergencySituation.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 	<body>
 		<h1>viewEmergencySituation</h1>
+		
+		<table>
+			<tr>
+				<td>
+					<image id="image" width="300px" height="300px">
+				</td>
+				<td>
+					<table>
+						<tr><td>Location Name:</td><td id="locationName"></td>
+						<tr><td>Municipality:</td><td id="municipality"></td>
+						<tr><td>Description:</td><td id="description"></td>
+						<tr><td>DateTime:</td><td id="dateTime"></td>
+						<tr><td>GoogleMap:</td><td id="gMapLoc"></td>
+						<tr><td>Territory:</td><td id="territory"></td>
+						<tr><td>Type:</td><td id="type"></td>
+						<tr><td>State:</td><td id="state"></td>
+						<tr><td>Volunteer:</td><td id="volunteer"></td>
+					</table>
+				</td>
+			</tr>
+		</table>
+		
+		<h3>Comments:</h3>
+		<textarea id="commentText" rows="4" cols="50"></textarea><br> 
+		<button id="commentButton">Comment</button>
+		<table id="comments"></table>
+		
 	</body>
-
 </html>

@@ -4,7 +4,7 @@
   "email" : "vol",
   "firstName" : "vol",
   "lastName" : "vol",
-  "profilePicture" : "./users/vol.jpg",
+  "profilePicture" : "./images/default-user.png",
   "userType" : "VOLUNTEER",
   "phoneNumber" : "123",
   "territoryId" : "1",

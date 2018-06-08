@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.joda.time.DateTime;
+
 public class Util {
 	
 	public static String getAbsolutePathToDeployedApp() {
@@ -51,5 +53,18 @@ public class Util {
 		fos.close();
 		
 	}
+	
+	public static String getCurrentDateTime() {
+		DateTime currentDateTime = DateTime.now();
+		String year = Integer.toString(currentDateTime.getYear());
+		String month = Integer.toString(currentDateTime.getMonthOfYear());
+		String day = Integer.toString(currentDateTime.getDayOfMonth());
+		String hour = Integer.toString(currentDateTime.getHourOfDay());
+		String minute = Integer.toString(currentDateTime.getMinuteOfHour());
+		
+		return day + "." + month + "." + year + " " + hour + ":" + minute;
+	}
+	
+	
 
 }

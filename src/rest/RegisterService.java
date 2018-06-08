@@ -35,15 +35,17 @@ public class RegisterService {
 			@FormDataParam("image") InputStream fileInputStream,
 			@FormDataParam("image") FormDataContentDisposition contentDispositionHeader) throws IOException, URISyntaxException {
 		
-		
-		String imagesDirPath = Util.getAbsolutePathToImagesDir("users");
-		Util.savePicture(imagesDirPath, username, fileInputStream);
-		
 		VolunteerDAO volunteerDAO = VolunteerDAO.getInstance();
-		String relativePathToImage = Util.getRelativePathToImage("users", username);
-		if(!volunteerDAO.volunteersExists(username))
+		if(!volunteerDAO.volunteersExists(username)) {
+			String relativePathToImage = "./images/default-user.png";
+			if(contentDispositionHeader.getFileName() != null) {
+				String imagesDirPath = Util.getAbsolutePathToImagesDir("users");
+				Util.savePicture(imagesDirPath, username, fileInputStream);
+				relativePathToImage = Util.getRelativePathToImage("users", username);
+			}
 			return volunteerDAO.createVolunteer(username, password, email, firstName, lastName, 
 					relativePathToImage, phoneNumber, territory);
+		}
 		else
 			return null;
 	}	

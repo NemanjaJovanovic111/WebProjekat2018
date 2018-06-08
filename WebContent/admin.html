@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="./js/admin.js"></script>
 </head>
 <body>
 
@@ -11,7 +14,21 @@
 <input id="inp" type="button" value="Create territory" onclick="location.href='createTerritory.html';" />
 <input id="inp" type="button" value="Edit your profile" onclick="location.href='editProfile.html';" />
 <input id="inp" type="button" value="Edit territory" onclick="location.href='editTerritory.html';" />
-<input id="inp" type="button" value="Delete territory" onclick="location.href='deleteTerritory.html';" />
+<input id="inp" type="button" value="Delete territory" onclick="location.href='deleteTerritory.html';" /><br><br>
 
+
+<table id="emergencies">
+	<tr>
+		<th></th>
+		<th>Location Name</th>
+		<th>Municipality</th>
+		<th>Description</th>
+		<th>DateTime</th>
+		<th>gMapLoc</th>
+		<th>Territory</th>
+		<th>Type</th>
+		<th>Volunteer</th>
+	</tr>
+</table>
 </body>
 </html>

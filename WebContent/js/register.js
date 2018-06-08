@@ -51,10 +51,12 @@ function passwordCheck() {
 function loadTerritories() {
 	$.get("../WebProjekat/rest/territoryService/getAll", function(territories){
 		$.each(territories, function (index, territory) {
-		    $('#territories').append($('<option>', { 
-		        value: territory.id,
-		        text : territory.name
-		    }));
+			if(territory.id !== "null") {
+			    $('#territories').append($('<option>', { 
+			        value: territory.id,
+			        text : territory.name
+			    }));
+			}
 		});
     });
 }
