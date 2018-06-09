@@ -8,6 +8,10 @@ function getActiveEmergencies() {
 	$.get("../WebProjekat/rest/emergencyService/getActive", function(emergencies) {
 		fillTable(emergencies);
     });
+	
+	$.get("../WebProjekat/rest/emergencyService/withoutVolunteer", function(emergencies) {
+		fillTable(emergencies);
+    });
 }
 
 
