@@ -1,2 +1,85 @@
-[  
-]
+[{
+  "id" : "4cf3edc2-3301-43d7-aa0c-844e8f02025d",
+  "locationName" : "House",
+  "municipalitie" : "municipality",
+  "description" : "Fire",
+  "dateTime" : "14.6.2018 01:09",
+  "gMapLoc" : "32.1431;44.314",
+  "territory" : "1",
+  "emergencyType" : "RED",
+  "picture" : "./images/default-emergency.jpeg",
+  "emergencyState" : "ACTIVE",
+  "volunteer" : ""
+}, {
+  "id" : "34f88894-27cc-4342-9a3e-8bf25abe4b84",
+  "locationName" : "Town Center",
+  "municipalitie" : "municipality",
+  "description" : "Eearthquake!!",
+  "dateTime" : "9.3.2018 01:25",
+  "gMapLoc" : "32.1431;44.314",
+  "territory" : "1",
+  "emergencyType" : "RED",
+  "picture" : "./images/default-emergency.jpeg",
+  "emergencyState" : "ACTIVE",
+  "volunteer" : ""
+}, {
+  "id" : "e1e01001-90fa-46d3-b35d-58b190539660",
+  "locationName" : "Main Bridge",
+  "municipalitie" : "municipality",
+  "description" : "Car Crash",
+  "dateTime" : "28.2.2018 04:49",
+  "gMapLoc" : "32.1431;44.314",
+  "territory" : "1",
+  "emergencyType" : "ORANGE",
+  "picture" : "./images/default-emergency.jpeg",
+  "emergencyState" : "ACTIVE",
+  "volunteer" : ""
+}, {
+  "id" : "0c00d89b-b2e7-402f-8e68-982a429503e7",
+  "locationName" : "Town Park",
+  "municipalitie" : "municipality",
+  "description" : "Violent Dog",
+  "dateTime" : "1.4.2018 11:18",
+  "gMapLoc" : "32.1431;44.314",
+  "territory" : "2",
+  "emergencyType" : "ORANGE",
+  "picture" : "./images/default-emergency.jpeg",
+  "emergencyState" : "ACTIVE",
+  "volunteer" : ""
+}, {
+  "id" : "34d7b565-b56c-45a5-b3ed-b81e204cd771",
+  "locationName" : "Pool",
+  "municipalitie" : "municipality",
+  "description" : "Water Leakage",
+  "dateTime" : "6.5.2018 18:37",
+  "gMapLoc" : "32.1431;44.314",
+  "territory" : "2",
+  "emergencyType" : "YELLOW",
+  "picture" : "./images/default-emergency.jpeg",
+  "emergencyState" : "ACTIVE",
+  "volunteer" : ""
+}, {
+  "id" : "71c5e695-f232-4b27-83ba-2aec8ec44faa",
+  "locationName" : "Main Street",
+  "municipalitie" : "municipality",
+  "description" : "My dog ran away!!",
+  "dateTime" : "17.3.2018 20:54",
+  "gMapLoc" : "32.1431;44.314",
+  "territory" : "3",
+  "emergencyType" : "YELLOW",
+  "picture" : "./images/default-emergency.jpeg",
+  "emergencyState" : "ACTIVE",
+  "volunteer" : ""
+}, {
+  "id" : "082ccd4a-52a3-436b-9a1b-8386748ef407",
+  "locationName" : "Archived",
+  "municipalitie" : "Archived",
+  "description" : "Archived",
+  "dateTime" : "10.2.2018 20:55",
+  "gMapLoc" : "32.1431;44.314",
+  "territory" : "3",
+  "emergencyType" : "RED",
+  "picture" : "./images/default-emergency.jpeg",
+  "emergencyState" : "ARCHIVE",
+  "volunteer" : ""
+}]

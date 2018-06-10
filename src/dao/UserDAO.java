@@ -16,8 +16,7 @@ public class UserDAO {
 		
 		ArrayList<Admin> admins = AdminDAO.getInstance().getAll();
 		ArrayList<Volunteer> volunteers = VolunteerDAO.getInstance().getAll();
-		
-		
+
 		for (User u : admins) {
 			if (u.getUsername().equals(username) && 
 			    u.getPassword().equals(password)) {
@@ -33,7 +32,7 @@ public class UserDAO {
 				return u;
 			}
 		}
-		
+
 		return null;
 	}
 

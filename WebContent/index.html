@@ -7,7 +7,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="./js/login.js"></script>
-
+<link href="style.css"  rel="stylesheet" type="text/css" >
 </head>
 <body>
 
@@ -18,8 +18,16 @@
 	<form>
 	<fieldset>
 		<legend>Enter your username and password : </legend>
-			Username : <input type="text"  id="username" /><br />
-			Password  : <input type="password"  id="password"/><br/>
+			<table>
+				<tr>
+					<td>Username:</td>
+					<td><input type="text"  id="username"/></td>
+				</tr>
+				<tr>
+					<td>Password:</td>
+					<td><input type="password"  id="password"/></td>
+				</tr>
+			</table>
 			<button type="button" id="loginButton">Login</button>
 	</fieldset>		
 	</form>

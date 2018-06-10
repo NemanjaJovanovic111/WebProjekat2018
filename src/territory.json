@@ -1,6 +1,6 @@
 [
 	{"id" : "null", "name" : "null", "area" : "null", "population" : "null" },
-	{"id" : "1", "name" : "Gornji Compi", "area" : "666", "population" : "260000" },
-	{"id" : "2", "name" : "Donji Compi", "area" : "1000", "population" : "420" },
-	{"id" : "3", "name" : "CompovGrad", "area" : "666", "population" : "1312312312" }
+	{"id" : "1", "name" : "Mitrovica", "area" : "1333", "population" : "90133" },
+	{"id" : "2", "name" : "Sombor", "area" : "2112", "population" : "42000" },
+	{"id" : "3", "name" : "Subotica", "area" : "3221", "population" : "120123" }
 ]

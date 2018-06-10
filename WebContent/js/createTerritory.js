@@ -13,7 +13,7 @@ $(document).ready(function (){
 			data: JSON.stringify(params),
 			success: function(data) {
 				if(data != null) {
-					alert("wow")
+					//redirect
 				}
 				else {
 					alert("Territory already exists");

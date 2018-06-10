@@ -1,16 +1,6 @@
 $(document).ready(function(){
 	
-	$.get("../WebProjekat/rest/territoryService/getAll", function(territories){
-		$.each(territories, function (index, territory) {
-			if(territory.id !== "null") {
-			    $('#territories').append($('<option>', { 
-			        value: territory.id,
-			        text : territory.name
-			    }));
-			}
-		});
-    });
-	
+	loadTerritories();
 	
 	$("#registerSituationButton").click(function() {
 		
@@ -32,7 +22,7 @@ $(document).ready(function(){
 	        return myXhr;
 	      },
 	      success: function(data) {
-	    	  console.log("EMERGENCY CREATED");
+	    	  window.history.back();
 	      },
 	      data: formData,
 	      cache: false,
@@ -42,3 +32,16 @@ $(document).ready(function(){
 	});
 	
 });
+
+function loadTerritories() {
+	$.get("../WebProjekat/rest/territoryService/getAll", function(territories){
+		$.each(territories, function (index, territory) {
+			if(territory.id !== "null") {
+			    $('#territories').append($('<option>', { 
+			        value: territory.id,
+			        text : territory.name
+			    }));
+			}
+		});
+    });
+}

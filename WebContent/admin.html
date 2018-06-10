@@ -6,6 +6,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="./js/admin.js"></script>
+<link href="style.css"  rel="stylesheet" type="text/css" >
 </head>
 <body>
 
@@ -16,6 +17,76 @@
 <input id="inp" type="button" value="Edit territory" onclick="location.href='editTerritory.html';" />
 <input id="inp" type="button" value="Delete territory" onclick="location.href='deleteTerritory.html';" /><br><br>
 
+
+<h3>Filter</h3>
+<table>
+	<tr>
+		<td>Filter by Type:</td>
+		<td>
+			<select id = "emergencyType">
+				<option value = "null">---</option>
+				<option value = "RED">RED</option>
+				<option value = "ORANGE">ORANGE</option>
+				<option value = "YELLOW">YELLOW</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Filter by Territory:</td>
+		<td>
+			<select id = "territories">
+				<option value = "null">---</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Filter Date:</td>
+		<td><input id = "dateFilter" type="checkbox"></td>
+	<tr>
+	<tr>
+		<td colspan="2">
+			<button onclick = "filter()">Filter</button>
+			<button id="btnResetuj" onclick = "filterReset()">Reset</button>
+		</td>
+</table><br><br>
+
+<h3>Search</h3>
+<table>
+	<tr>
+		<td>Municipality:</td>
+		<td colspan="2">
+			<input type="text" id="searchNazivOpstine">
+		</td>
+	</tr>
+	<tr>
+		<td>Territory:</td>
+		<td colspan="2">
+			<input type="text" id="searchNazivTeritorije">
+		</td>
+	</tr>
+	<tr>
+		<td>Description:</td>
+		<td colspan="2">
+			<input type="text" id="searchOpis">
+		</td>
+	</tr>
+	<tr>
+		<td>Volunteer:</td>
+		<td>
+			<input type="text" id="searchVolonter">
+		</td>
+		<td><input id = "nullVol" type="checkbox">No Volunteer</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<button id="btnPretraga" onclick = "search()">Search</button>
+			<button id="btnResetuj" onclick = "searchReset()">Reset</button>
+		</td>
+	</tr>
+</table><br><br>
+
+<h3>Combine Search & Filter</h3>
+<button id="btnCombine" onclick = "combine()">Search & Filter</button><br><br>
 
 <table id="emergencies">
 	<tr>
